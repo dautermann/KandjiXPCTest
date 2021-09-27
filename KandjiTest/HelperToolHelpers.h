@@ -1,5 +1,5 @@
 //
-//  XPCCommunicator.h
+//  HelperToolManager.h
 //  KandjiTest
 //
 //  Created by Michael Dautermann on 9/22/21.
@@ -9,9 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XPCCommunicator : NSObject
-
-- (void) fetchFolderInfoForPath: (NSString *)path;
+@interface HelperToolManager : NSObject
 
 @end
 
