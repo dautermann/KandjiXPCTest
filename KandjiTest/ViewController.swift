@@ -11,38 +11,82 @@ class ViewController: NSViewController {
 
     var path: String = "/"
     var fileArray: [String]? = nil
+    @IBOutlet var tableView: NSTableView!
+    @IBOutlet var backButton: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.doubleAction = #selector(doubleClickOnResultRow)
     }
     
     override func viewWillAppear() {
         super.viewWillAppear()
         let xpc = XPCCommunicators()
-        xpc.fetchFolderInfoFor(path: path) { (results) in
-            
-            Swift.print("got results into Swift \(results ?? "nothing!")")
+        xpc.fetchFolderInfoFor(path: path) { [weak self] (results) in
+            guard let self = self else { return }
+            if self.path.last == "/" {
+                self.fileArray = results?.components(separatedBy: ":")
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        if let window = self.view.window, let wc = window.windowController as? KandjiTestWindowController {
+            if let rootVC = wc.navigationController.viewControllers.first as? ViewController {
+                backButton.isHidden = ( self == rootVC )
+            }
+        }
+    }
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
+    
+    @objc func doubleClickOnResultRow() {
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateController(withIdentifier: "ViewController") as! ViewController
+        // this array is +1 based because current path hides in position 0
+        if let appendPath = fileArray?[tableView.clickedRow+1] {
+            viewController.path = path + appendPath + "/"
+            if let window = self.view.window, let wc = window.windowController as? KandjiTestWindowController {
+                wc.navigationController.pushViewController(viewController, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func backButtonTouched(sender: NSButton) {
+        if let window = self.view.window, let wc = window.windowController as? KandjiTestWindowController {
+            if let rootVC = wc.navigationController.viewControllers.first as? ViewController, self != rootVC {
+                wc.navigationController.popViewController(animated: true)
+            }
+        }
+    }
 }
 
-extension ViewController: NSTableViewDataSource {
+extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
+        if let numberOfRows = fileArray?.count {
+            return numberOfRows
+        }
         return 0
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        return nil
-    }
+        guard let identifier = tableColumn?.identifier, let cell = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView else { return nil }
+        
+        // fileArray array is +1 based because current path hides in position 0
+        let rowToFetch = row+1
+        guard rowToFetch < fileArray?.count ?? 0, let name = fileArray?[rowToFetch] else { return nil }
 
+        cell.textField?.stringValue = name
+        
+        return cell
+    }
 }

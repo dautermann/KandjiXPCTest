@@ -31,7 +31,8 @@
 //                if ([extension isEqualToString:@"mp3"]) {
 //                    [mp3Files addObject:[path stringByAppendingPathComponent:filename]];
 //                }
-                response = [response stringByAppendingFormat:@" %@", filename];
+                // we'll use a colon -- a reserved character when messing with POSIX -- to separate paths
+                response = [response stringByAppendingFormat:@":%@", filename];
             }];
         } else {
             // it's a file...
