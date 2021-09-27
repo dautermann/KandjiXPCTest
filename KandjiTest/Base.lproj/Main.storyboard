@@ -708,15 +708,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="YEX-1n-JR2">
-                                <rect key="frame" x="0.0" y="75" width="300" height="125"/>
+                                <rect key="frame" x="0.0" y="100" width="300" height="100"/>
                                 <subviews>
                                     <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yCs-BD-Z2s">
-                                        <rect key="frame" x="6" y="-2" width="76" height="32"/>
+                                        <rect key="frame" x="6" y="-2" width="74" height="32"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="Ovt-cH-Uas"/>
                                             <constraint firstAttribute="height" constant="20" id="cLR-hY-SyO"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="iBJ-gt-FIb"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="push" title="&lt; Back" bezelStyle="rounded" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MGF-gg-fQI">
+                                        <buttonCell key="cell" type="push" title="&lt; Back" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="MGF-gg-fQI">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -724,21 +724,35 @@
                                             <action selector="backButtonTouchedWithSender:" target="XfG-lQ-9wD" id="rag-WW-gUk"/>
                                         </connections>
                                     </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mwR-QT-2EP">
+                                        <rect key="frame" x="76" y="5" width="221" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="LYV-ZS-XIT"/>
+                                            <constraint firstAttribute="height" constant="20" id="dU5-3h-uDJ"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="TFE-Vr-Knt">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="mwR-QT-2EP" firstAttribute="leading" secondItem="yCs-BD-Z2s" secondAttribute="trailing" constant="5" id="4Vd-dx-dm7"/>
                                     <constraint firstItem="yCs-BD-Z2s" firstAttribute="leading" secondItem="YEX-1n-JR2" secondAttribute="leading" constant="13" id="5Kc-SJ-6ZO"/>
                                     <constraint firstAttribute="bottom" secondItem="yCs-BD-Z2s" secondAttribute="bottom" constant="5" id="9EU-MU-Ydo"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yCs-BD-Z2s" secondAttribute="trailing" constant="225" id="C7Q-sF-ESX"/>
-                                    <constraint firstAttribute="height" constant="125" id="ooD-m2-sya"/>
+                                    <constraint firstAttribute="bottom" secondItem="mwR-QT-2EP" secondAttribute="bottom" constant="5" id="Ccs-2F-Vbp"/>
+                                    <constraint firstAttribute="trailing" secondItem="mwR-QT-2EP" secondAttribute="trailing" constant="5" id="kcJ-8d-UNj"/>
+                                    <constraint firstAttribute="height" constant="100" id="ooD-m2-sya"/>
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77Y-Py-ic0">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                                 <clipView key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0Q-Cx-mRi">
-                                    <rect key="frame" x="1" y="1" width="298" height="73"/>
+                                    <rect key="frame" x="1" y="1" width="298" height="98"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="16" rowSizeStyle="automatic" viewBased="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au8-Fu-xKN">
-                                            <rect key="frame" x="0.0" y="0.0" width="298" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="132"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -816,6 +830,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="yCs-BD-Z2s" id="EDu-ZR-XIy"/>
+                        <outlet property="pathLabel" destination="mwR-QT-2EP" id="hBX-0i-Hwz"/>
                         <outlet property="tableView" destination="au8-Fu-xKN" id="8XO-Rw-ctG"/>
                     </connections>
                 </viewController>

@@ -13,10 +13,13 @@ class ViewController: NSViewController {
     var fileArray: [String]? = nil
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var backButton: NSButton!
+    @IBOutlet var pathLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.doubleAction = #selector(doubleClickOnResultRow)
+        // I want to get rid of the constraint warnings so so very bad!
+        // tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewWillAppear() {
@@ -31,6 +34,7 @@ class ViewController: NSViewController {
                 }
             }
         }
+        pathLabel.stringValue = path
     }
 
     override func viewDidAppear() {
