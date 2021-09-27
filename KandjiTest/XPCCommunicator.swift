@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+class XPCCommunicators {
+    var connectionToService: NSXPCConnection
+    
+    init() {
+        connectionToService = NSXPCConnection.init(serviceName: "com.myke.FileInvestigator")
+        connectionToService.remoteObjectInterface = NSXPCInterface(with: FileInvestigatorProtocol.self)
+        connectionToService.resume()
+    }
+    
+    func fetchFolderInfoFor(path: String, completion: @escaping (String?) -> ()) {
+        if let proxy = connectionToService.remoteObjectProxy as? FileInvestigatorProtocol {
+            proxy.fetchFolderInfo(forPath: path) { (reply) in
+                completion(reply)
+            }
+        }
+    }
+}

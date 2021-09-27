@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,10 +11,39 @@
 		257AE94226FB45980069A366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257AE94126FB45980069A366 /* ViewController.swift */; };
 		257AE94426FB459C0069A366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 257AE94326FB459C0069A366 /* Assets.xcassets */; };
 		257AE94726FB459C0069A366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257AE94526FB459C0069A366 /* Main.storyboard */; };
-		257AE95326FB45C10069A366 /* XPCCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 257AE95226FB45C10069A366 /* XPCCommunicator.m */; };
+		25B8182726FD06D5009DCEDB /* FileInvestigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B8182626FD06D5009DCEDB /* FileInvestigator.m */; };
+		25B8182926FD06D5009DCEDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B8182826FD06D5009DCEDB /* main.m */; };
+		25B8182D26FD06D5009DCEDB /* FileInvestigator.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 25B8182226FD06D5009DCEDB /* FileInvestigator.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		25B818452700F6CF009DCEDB /* XPCCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B818442700F6CF009DCEDB /* XPCCommunicator.swift */; };
+		ECE55F4E5C9BE11B244A6B53 /* Pods_KandjiTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178D927ED1266214DBDE53B9 /* Pods_KandjiTest.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		25B8182B26FD06D5009DCEDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 257AE93426FB45980069A366 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25B8182126FD06D5009DCEDB;
+			remoteInfo = FileInvestigator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		25B8181826FD06AB009DCEDB /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				25B8182D26FD06D5009DCEDB /* FileInvestigator.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		178D927ED1266214DBDE53B9 /* Pods_KandjiTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KandjiTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		257AE93C26FB45980069A366 /* KandjiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KandjiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		257AE93F26FB45980069A366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		257AE94126FB45980069A366 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,12 +52,27 @@
 		257AE94826FB459C0069A366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		257AE94926FB459C0069A366 /* KandjiTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KandjiTest.entitlements; sourceTree = "<group>"; };
 		257AE95026FB45C10069A366 /* KandjiTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KandjiTest-Bridging-Header.h"; sourceTree = "<group>"; };
-		257AE95126FB45C10069A366 /* XPCCommunicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCCommunicator.h; sourceTree = "<group>"; };
-		257AE95226FB45C10069A366 /* XPCCommunicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPCCommunicator.m; sourceTree = "<group>"; };
+		25B8182226FD06D5009DCEDB /* FileInvestigator.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FileInvestigator.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B8182426FD06D5009DCEDB /* FileInvestigatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileInvestigatorProtocol.h; sourceTree = "<group>"; };
+		25B8182526FD06D5009DCEDB /* FileInvestigator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileInvestigator.h; sourceTree = "<group>"; };
+		25B8182626FD06D5009DCEDB /* FileInvestigator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileInvestigator.m; sourceTree = "<group>"; };
+		25B8182826FD06D5009DCEDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		25B8182A26FD06D5009DCEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25B818442700F6CF009DCEDB /* XPCCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCCommunicator.swift; sourceTree = "<group>"; };
+		448658E5E90170443B5C885A /* Pods-KandjiTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KandjiTest.release.xcconfig"; path = "Target Support Files/Pods-KandjiTest/Pods-KandjiTest.release.xcconfig"; sourceTree = "<group>"; };
+		E8EFA7C0756406B7C591DDA7 /* Pods-KandjiTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KandjiTest.debug.xcconfig"; path = "Target Support Files/Pods-KandjiTest/Pods-KandjiTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		257AE93926FB45980069A366 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE55F4E5C9BE11B244A6B53 /* Pods_KandjiTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25B8181F26FD06D5009DCEDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,7 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				257AE93E26FB45980069A366 /* KandjiTest */,
+				25B8182326FD06D5009DCEDB /* FileInvestigator */,
 				257AE93D26FB45980069A366 /* Products */,
+				36C255AA0530D3F182FA3C7B /* Pods */,
+				5E3DF8E3654DBD23BE323677 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				257AE93C26FB45980069A366 /* KandjiTest.app */,
+				25B8182226FD06D5009DCEDB /* FileInvestigator.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,8 +107,7 @@
 			children = (
 				257AE93F26FB45980069A366 /* AppDelegate.swift */,
 				257AE94126FB45980069A366 /* ViewController.swift */,
-				257AE95126FB45C10069A366 /* XPCCommunicator.h */,
-				257AE95226FB45C10069A366 /* XPCCommunicator.m */,
+				25B818442700F6CF009DCEDB /* XPCCommunicator.swift */,
 				257AE94326FB459C0069A366 /* Assets.xcassets */,
 				257AE94526FB459C0069A366 /* Main.storyboard */,
 				257AE94826FB459C0069A366 /* Info.plist */,
@@ -70,6 +117,35 @@
 			path = KandjiTest;
 			sourceTree = "<group>";
 		};
+		25B8182326FD06D5009DCEDB /* FileInvestigator */ = {
+			isa = PBXGroup;
+			children = (
+				25B8182426FD06D5009DCEDB /* FileInvestigatorProtocol.h */,
+				25B8182526FD06D5009DCEDB /* FileInvestigator.h */,
+				25B8182626FD06D5009DCEDB /* FileInvestigator.m */,
+				25B8182826FD06D5009DCEDB /* main.m */,
+				25B8182A26FD06D5009DCEDB /* Info.plist */,
+			);
+			path = FileInvestigator;
+			sourceTree = "<group>";
+		};
+		36C255AA0530D3F182FA3C7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8EFA7C0756406B7C591DDA7 /* Pods-KandjiTest.debug.xcconfig */,
+				448658E5E90170443B5C885A /* Pods-KandjiTest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5E3DF8E3654DBD23BE323677 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				178D927ED1266214DBDE53B9 /* Pods_KandjiTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,18 +153,39 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 257AE94C26FB459C0069A366 /* Build configuration list for PBXNativeTarget "KandjiTest" */;
 			buildPhases = (
+				5EEEB787E932AD59A8BED1E3 /* [CP] Check Pods Manifest.lock */,
 				257AE93826FB45980069A366 /* Sources */,
 				257AE93926FB45980069A366 /* Frameworks */,
 				257AE93A26FB45980069A366 /* Resources */,
+				7C559E95B004BD2A0DBCF631 /* [CP] Embed Pods Frameworks */,
+				25B8181826FD06AB009DCEDB /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				25B8182C26FD06D5009DCEDB /* PBXTargetDependency */,
 			);
 			name = KandjiTest;
 			productName = KandjiTest;
 			productReference = 257AE93C26FB45980069A366 /* KandjiTest.app */;
 			productType = "com.apple.product-type.application";
+		};
+		25B8182126FD06D5009DCEDB /* FileInvestigator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25B8182E26FD06D5009DCEDB /* Build configuration list for PBXNativeTarget "FileInvestigator" */;
+			buildPhases = (
+				25B8181E26FD06D5009DCEDB /* Sources */,
+				25B8181F26FD06D5009DCEDB /* Frameworks */,
+				25B8182026FD06D5009DCEDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FileInvestigator;
+			productName = FileInvestigator;
+			productReference = 25B8182226FD06D5009DCEDB /* FileInvestigator.xpc */;
+			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
 
@@ -102,6 +199,9 @@
 					257AE93B26FB45980069A366 = {
 						CreatedOnToolsVersion = 12.4;
 						LastSwiftMigration = 1240;
+					};
+					25B8182126FD06D5009DCEDB = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
@@ -119,6 +219,7 @@
 			projectRoot = "";
 			targets = (
 				257AE93B26FB45980069A366 /* KandjiTest */,
+				25B8182126FD06D5009DCEDB /* FileInvestigator */,
 			);
 		};
 /* End PBXProject section */
@@ -133,20 +234,86 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		25B8182026FD06D5009DCEDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EEEB787E932AD59A8BED1E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KandjiTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C559E95B004BD2A0DBCF631 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KandjiTest/Pods-KandjiTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KandjiTest/Pods-KandjiTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KandjiTest/Pods-KandjiTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		257AE93826FB45980069A366 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25B818452700F6CF009DCEDB /* XPCCommunicator.swift in Sources */,
 				257AE94226FB45980069A366 /* ViewController.swift in Sources */,
 				257AE94026FB45980069A366 /* AppDelegate.swift in Sources */,
-				257AE95326FB45C10069A366 /* XPCCommunicator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25B8181E26FD06D5009DCEDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25B8182926FD06D5009DCEDB /* main.m in Sources */,
+				25B8182726FD06D5009DCEDB /* FileInvestigator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25B8182C26FD06D5009DCEDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25B8182126FD06D5009DCEDB /* FileInvestigator */;
+			targetProxy = 25B8182B26FD06D5009DCEDB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		257AE94526FB459C0069A366 /* Main.storyboard */ = {
@@ -277,6 +444,7 @@
 		};
 		257AE94D26FB459C0069A366 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8EFA7C0756406B7C591DDA7 /* Pods-KandjiTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -284,6 +452,7 @@
 				CODE_SIGN_ENTITLEMENTS = KandjiTest/KandjiTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = NJ7V5DU8KW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = KandjiTest/Info.plist;
@@ -301,6 +470,7 @@
 		};
 		257AE94E26FB459C0069A366 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 448658E5E90170443B5C885A /* Pods-KandjiTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -308,6 +478,7 @@
 				CODE_SIGN_ENTITLEMENTS = KandjiTest/KandjiTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = NJ7V5DU8KW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = KandjiTest/Info.plist;
@@ -319,6 +490,38 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KandjiTest/KandjiTest-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		25B8182F26FD06D5009DCEDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NJ7V5DU8KW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = FileInvestigator/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myke.FileInvestigator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		25B8183026FD06D5009DCEDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NJ7V5DU8KW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = FileInvestigator/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myke.FileInvestigator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -339,6 +542,15 @@
 			buildConfigurations = (
 				257AE94D26FB459C0069A366 /* Debug */,
 				257AE94E26FB459C0069A366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25B8182E26FD06D5009DCEDB /* Build configuration list for PBXNativeTarget "FileInvestigator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25B8182F26FD06D5009DCEDB /* Debug */,
+				25B8183026FD06D5009DCEDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
