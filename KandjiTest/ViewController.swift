@@ -19,7 +19,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         tableView.doubleAction = #selector(doubleClickOnResultRow)
         // I want to get rid of the constraint warnings so so very bad!
-        // tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewWillAppear() {
@@ -27,9 +27,13 @@ class ViewController: NSViewController {
         let xpc = XPCCommunicators()
         xpc.fetchFolderInfoFor(path: path) { [weak self] (results) in
             guard let self = self else { return }
-            if self.path.last == "/" {
-                self.fileArray = results?.components(separatedBy: ":")
+            if let folderArray = results as? NSArray as? [String] {
+                self.fileArray = folderArray
                 DispatchQueue.main.async {
+                    if self.path.count > 1 {
+                        self.path.append("/")
+                        self.pathLabel.stringValue.append("/")
+                    }
                     self.tableView.reloadData()
                 }
             }
@@ -56,7 +60,7 @@ class ViewController: NSViewController {
         let viewController = storyboard.instantiateController(withIdentifier: "ViewController") as! ViewController
         // this array is +1 based because current path hides in position 0
         if let appendPath = fileArray?[tableView.clickedRow+1] {
-            viewController.path = path + appendPath + "/"
+            viewController.path = path + appendPath
             if let window = self.view.window, let wc = window.windowController as? KandjiTestWindowController {
                 wc.navigationController.pushViewController(viewController, animated: true)
             }
@@ -75,8 +79,9 @@ class ViewController: NSViewController {
 extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        if let numberOfRows = fileArray?.count {
-            return numberOfRows
+        if let numberOfRows = fileArray?.count, numberOfRows > 1 {
+            // fileArray array is +1 based because current path hides in position 0
+            return numberOfRows-1
         }
         return 0
     }

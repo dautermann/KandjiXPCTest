@@ -10,15 +10,26 @@ import BFNavigationController
 
 class KandjiTestWindowController: NSWindowController {
     var navigationController: BFNavigationController = BFNavigationController()
+    var initialVC: ViewController = {
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateController(withIdentifier: "ViewController") as! ViewController
+        viewController.path = "/"
+        return viewController
+    }()
+
+    override func windowWillLoad() {
+        super.windowWillLoad()
+    }
 
     override func windowDidLoad() {
         super.windowDidLoad()
         if let window = self.window {
-            let storyboard = NSStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateController(withIdentifier: "ViewController") as! ViewController
-            viewController.path = "/"
-            navigationController = BFNavigationController.init(frame: NSMakeRect(0, 0, window.frame.size.width, window.frame.size.height), rootViewController: viewController)
-            window.contentView?.addSubview(navigationController.view)
+//            let storyboard = NSStoryboard(name: "Main", bundle: nil)
+//            let viewController = storyboard.instantiateController(withIdentifier: "ViewController") as! ViewController
+//            viewController.path = "/"
+            navigationController = BFNavigationController.init(frame: NSMakeRect(0, 0, window.frame.size.width, window.frame.size.height), rootViewController: initialVC)
+            // window.contentView?.addSubview(navigationController.view)
+            window.contentView = navigationController.view
         }
     }
 

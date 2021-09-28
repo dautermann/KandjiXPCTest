@@ -16,7 +16,7 @@ class XPCCommunicators {
         connectionToService.resume()
     }
     
-    func fetchFolderInfoFor(path: String, completion: @escaping (String?) -> ()) {
+    func fetchFolderInfoFor(path: String, completion: @escaping (Any?) -> ()) {
         if let proxy = connectionToService.remoteObjectProxy as? FileInvestigatorProtocol {
             proxy.fetchFolderInfo(forPath: path) { (reply) in
                 completion(reply)
