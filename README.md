@@ -9,7 +9,7 @@ XPC and Objective C and Swift and...
 > something that you would normally simply do in the app itself. Ideally, you should be able to 
 > see a preview of something like a photo, as you would in Finder. We will leave the 
 > rest of the details and what the app does to you, but we would like you to attempt to 
-> make this as modern in appearance as possible.```
+> make this as modern in appearance as possible.
 
 ## How to build
 
