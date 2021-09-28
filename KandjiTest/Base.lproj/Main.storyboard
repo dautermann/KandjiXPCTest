@@ -751,12 +751,12 @@
                                     <constraint firstItem="mwR-QT-2EP" firstAttribute="leading" secondItem="yCs-BD-Z2s" secondAttribute="trailing" constant="5" id="qQw-yv-pmA"/>
                                 </constraints>
                             </customView>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77Y-Py-ic0">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="100" horizontalPageScroll="10" verticalLineScroll="100" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77Y-Py-ic0">
                                 <rect key="frame" x="0.0" y="0.0" width="313" height="150"/>
                                 <clipView key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0Q-Cx-mRi">
                                     <rect key="frame" x="1" y="1" width="311" height="148"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="16" rowSizeStyle="automatic" viewBased="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au8-Fu-xKN">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="100" rowSizeStyle="automatic" viewBased="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au8-Fu-xKN">
                                             <rect key="frame" x="0.0" y="0.0" width="311" height="148"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -795,6 +795,47 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="TSB-DQ-gMP" id="C9n-Y8-Zfs"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="FileDetailCell" translatesAutoresizingMaskIntoConstraints="NO" id="wzC-Cm-5Ao" customClass="FileAttributeTableCellView" customModule="KandjiTest" customModuleProvider="target">
+                                                            <rect key="frame" x="8" y="16" width="294" height="100"/>
+                                                            <subviews>
+                                                                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zi-cF-FrE">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="294" height="100"/>
+                                                                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rQ7-wd-P8c">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="279" height="100"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="jjL-mp-Sla">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="279" height="100"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                <size key="minSize" width="279" height="100"/>
+                                                                                <size key="maxSize" width="279" height="10000000"/>
+                                                                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textView>
+                                                                        </subviews>
+                                                                    </clipView>
+                                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="EyF-kh-zv1">
+                                                                        <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </scroller>
+                                                                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2xs-RK-762">
+                                                                        <rect key="frame" x="279" y="0.0" width="15" height="100"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </scroller>
+                                                                </scrollView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="7zi-cF-FrE" firstAttribute="leading" secondItem="wzC-Cm-5Ao" secondAttribute="leading" id="Mai-7k-ZKD"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Pbx-zB-YMB"/>
+                                                                <constraint firstAttribute="bottom" secondItem="7zi-cF-FrE" secondAttribute="bottom" id="TeB-Db-nbO"/>
+                                                                <constraint firstItem="7zi-cF-FrE" firstAttribute="top" secondItem="wzC-Cm-5Ao" secondAttribute="top" id="aB6-CD-WS2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="7zi-cF-FrE" secondAttribute="trailing" id="rzJ-Nl-9YL"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="textView" destination="jjL-mp-Sla" id="maR-PK-3IF"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>

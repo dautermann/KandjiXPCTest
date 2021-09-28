@@ -11,6 +11,7 @@ class ViewController: NSViewController {
 
     var path: String = "/"
     var fileArray: [String]? = nil
+    var fileAttributes: [String:Any]? = nil
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var backButton: NSButton!
     @IBOutlet var pathLabel: NSTextField!
@@ -35,9 +36,11 @@ class ViewController: NSViewController {
                     }
                     self.tableView.reloadData()
                 }
-            }
-            if let attributes = results as? NSDictionary as? [String:Any] {
-                Swift.print("attributes = \(attributes as AnyObject)")
+            } else {
+                self.fileAttributes = results as? NSDictionary as? [String:Any]
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
         pathLabel.stringValue = path
@@ -60,8 +63,7 @@ class ViewController: NSViewController {
     @objc func doubleClickOnResultRow() {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateController(withIdentifier: "ViewController") as! ViewController
-        // this array is +1 based because current path hides in position 0
-        if let appendPath = fileArray?[tableView.clickedRow+1] {
+        if let appendPath = fileArray?[tableView.clickedRow] {
             viewController.path = path + appendPath
             if let window = self.view.window, let wc = window.windowController as? KandjiTestWindowController {
                 wc.navigationController.pushViewController(viewController, animated: true)
@@ -82,22 +84,34 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
         if let numberOfRows = fileArray?.count, numberOfRows > 1 {
-            // fileArray array is +1 based because current path hides in position 0
-            return numberOfRows-1
+            return numberOfRows
         }
-        return 0
+        return fileAttributes == nil ? 0 : 1
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        guard let identifier = tableColumn?.identifier, let cell = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView else { return nil }
-        
-        // fileArray array is +1 based because current path hides in position 0
-        let rowToFetch = row+1
-        guard rowToFetch < fileArray?.count ?? 0, let name = fileArray?[rowToFetch] else { return nil }
-
-        cell.textField?.stringValue = name
-        
-        return cell
+        var identifier = NSUserInterfaceItemIdentifier("cells")
+        if fileArray == nil {
+            identifier = NSUserInterfaceItemIdentifier("FileDetailCell")
+            if let cell = tableView.makeView(withIdentifier: identifier, owner: self) as? FileAttributeTableCellView {
+                cell.textView.string = "\(fileAttributes as AnyObject)"
+                return cell
+            }
+        }
+        if let cell = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView, let fileArray = fileArray, row < fileArray.count {
+            let name = fileArray[row]
+            cell.textField?.stringValue = name
+            return cell
+        }
+        return nil
     }
+
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return fileArray == nil ? 100.0 : 16.0
+    }
+}
+
+class FileAttributeTableCellView : NSTableCellView {
+    @IBOutlet var textView: NSTextView!
 }
