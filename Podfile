@@ -1,4 +1,3 @@
-xcodeproj 'KandjiTest.project'
 use_frameworks!
 
 def import_pods
