@@ -18,7 +18,6 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.doubleAction = #selector(doubleClickOnResultRow)
-        // I want to get rid of the constraint warnings so so very bad!
         tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -36,6 +35,9 @@ class ViewController: NSViewController {
                     }
                     self.tableView.reloadData()
                 }
+            }
+            if let attributes = results as? NSDictionary as? [String:Any] {
+                Swift.print("attributes = \(attributes as AnyObject)")
             }
         }
         pathLabel.stringValue = path

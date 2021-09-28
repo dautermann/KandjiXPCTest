@@ -19,7 +19,6 @@
         if (directoryFlag) {
             NSArray* dirs = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
             reply(dirs);
-            syslog(LOG_NOTICE, "fetchFolderInfoForPath %ld folders being returned", [dirs count]);
         } else {
             // it's a file... return everything we can find out about this file
             NSError *error;
